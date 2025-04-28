@@ -1,6 +1,4 @@
-.frinds-list {
-  margin: 1.5rem auto 0;
+.friendList {
   display: flex;
-  gap: 1.2rem;
-  width: fit-content;
+  margin-bottom: 50px;
 }

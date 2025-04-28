@@ -1,27 +1,37 @@
-import css from "./Profile.module.css";
+import s from "./Profile.module.css";
 
-const Profile = function ({ name, tag, location, image, stats }) {
-    return (
-        <div className={css.card}>
-            <div>
-                <img src={image} alt="User avatar" className={css.avatar} />
-                <p className={css.name}>{name}</p>
-                <p className={css.text}>@{tag}</p>
-                <p className={css.text}>{location}</p>
-            </div>
+const Profile = ({
+  name,
+  tag,
+  location,
+  image,
+  stats: { followers, views, likes },
+}) => {
+  return (
+    <div className={s.profile}>
+      <div className={s.profileCard}>
+        <img className={s.profileImg} src={image} alt={name} />
+        <p className={s.profileName}>{name}</p>
+        <p className={s.profileTag}>@{tag}</p>
+        <p className={s.profileLocation}>{location}</p>
+      </div>
 
-            <ul className={css["stats-list"]}>
-                {Object.keys(stats).map((statName) => {
-                    return (
-                        <li key={statName} className={css["stats-item"]}>
-                            <span>{statName}</span>
-                            <span className={css["stats-value"]}>{stats[statName]}</span>
-                        </li>
-                    );
-                })}
-            </ul>
-        </div>
-    );
+      <ul className={s.profileStats}>
+        <li className={s.profileItem}>
+          <span className={s.profileLabel}>Followers</span>
+          <span className={s.profileQuantity}>{followers}</span>
+        </li>
+        <li className={s.profileItem}>
+          <span className={s.profileLabel}>Views</span>
+          <span className={s.profileQuantity}>{views}</span>
+        </li>
+        <li className={s.profileItem}>
+          <span className={s.profileLabel}>Likes</span>
+          <span className={s.profileQuantity}>{likes}</span>
+        </li>
+      </ul>
+    </div>
+  );
 };
 
 export default Profile;
